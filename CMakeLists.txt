@@ -28,6 +28,7 @@ include_directories(
   ${NANOVG_INCLUDE_DIR}
   # NanoGUI user interface library
   ${NANOGUI_INCLUDE_DIR}
+  ${NANOGUI_EXTRA_INCS}
   # Portable filesystem API
   ${FILESYSTEM_INCLUDE_DIR}
 )
@@ -89,6 +90,7 @@ add_executable(nori
   src/photonmapper.cpp
 )
 
+add_definitions(${NANOGUI_EXTRA_DEFS})
 
 # The following lines build the warping test application
 add_executable(warptest

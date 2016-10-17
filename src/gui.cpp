@@ -98,14 +98,15 @@ void NoriScreen::drawContents() {
     const Vector2i &size = m_block.getSize();
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);
-    glPixelStorei(GL_UNPACK_ROW_LENGTH, m_block.cols());
+    glPixelStorei(GL_UNPACK_ROW_LENGTH, (GLint) m_block.cols());
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, size.x(), size.y(),
             0, GL_RGBA, GL_FLOAT, (uint8_t *) m_block.data() +
             (borderSize * m_block.cols() + borderSize) * sizeof(Color4f));
     glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
     m_block.unlock();
 
-    glViewport(0, 36 * mPixelRatio, mPixelRatio*size[0], mPixelRatio*size[1]);
+    glViewport(0, GLsizei(36 * mPixelRatio), GLsizei(mPixelRatio*size[0]),
+         GLsizei(mPixelRatio*size[1]));
     m_shader->bind();
     m_shader->setUniform("scale", m_scale);
     m_shader->setUniform("source", 0);

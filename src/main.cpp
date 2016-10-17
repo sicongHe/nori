@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
         } else if (path.extension() == "exr") {
             /* Alternatively, provide a basic OpenEXR image viewer */
             Bitmap bitmap(argv[1]);
-            ImageBlock block(Vector2i(bitmap.cols(), bitmap.rows()), nullptr);
+            ImageBlock block(Vector2i((int) bitmap.cols(), (int) bitmap.rows()), nullptr);
             block.fromBitmap(bitmap);
             nanogui::init();
             NoriScreen *screen = new NoriScreen(block);

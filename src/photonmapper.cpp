@@ -41,6 +41,8 @@ public:
         Sampler *sampler = static_cast<Sampler *>(
             NoriObjectFactory::createInstance("independent", PropertyList()));
 
+        (void) sampler; // silence unused variable warning
+
         /* Allocate memory for the photon map */
         m_photonMap = std::unique_ptr<PhotonMap>(new PhotonMap());
         m_photonMap->reserve(m_photonCount);

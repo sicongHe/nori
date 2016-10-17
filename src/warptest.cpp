@@ -39,6 +39,10 @@
  *   are most certainly not expected to read or understand any of it.
  * ======================================================================= */
 
+#if defined(_MSC_VER)
+#  pragma warning (disable: 4305 4244)
+#endif
+
 using namespace nanogui;
 using namespace std;
 
